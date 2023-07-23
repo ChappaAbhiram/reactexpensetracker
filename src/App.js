@@ -1,5 +1,6 @@
 import ExpenseItem from './components/Expenses/ExpenseItem';
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 import NewExpense from './components/NewExpenses/NewExpense'
 function App() {
   const expenses = [
@@ -32,9 +33,10 @@ function App() {
       location : 'Bangalore',
     },
   ];
+  const [expensesarray, setExpenses] = useState(expenses);
   const expenseitems = [];
-  for (let index = 0; index < expenses.length; index++) {
-    const expense = expenses[index];
+  for (let index = 0; index < expensesarray.length; index++) {
+    const expense = expensesarray[index];
   expenseitems.push(<ExpenseItem
     title={expense.title}
     amount={expense.amount}
@@ -49,9 +51,12 @@ function App() {
 //   React.createElement('h2',{},'Lets get started!'),
 //   React.createElement(Expenses,{items:expenses})
 //  );
+const addExpenseHandler = (expensed)=>{
+  setExpenses((prevexpenses)=>[...prevexpenses,expensed]);
+}
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       {expenseitems}
     </div>
   );
