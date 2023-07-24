@@ -81,7 +81,7 @@ return <form onSubmit={submitHandler}>
         <label>Date</label>
         <input type='date' 
         value={enteredDate}
-        onChange={datechangeHandler} min='2021-01-01' max='2025-12-31'/>
+        onChange={datechangeHandler} min='2019-01-01' max='2025-12-31'/>
     </div>
     <div className="new-expense__control">
         <label>Location</label>
