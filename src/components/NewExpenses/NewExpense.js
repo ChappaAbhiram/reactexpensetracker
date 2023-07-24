@@ -6,13 +6,12 @@ const NewExpense=(props)=>{
         const expenseData={
             ...enteredExpenseData,
             id : Math.random().toString(),
-            location : 'visakhapatnam'
         };
         //console.log(expenseData);
         props.onAddExpense(expenseData);
     }
     return (
-    <div class="new-expense">
+    <div className="new-expense">
         <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}/>
     </div>
     );

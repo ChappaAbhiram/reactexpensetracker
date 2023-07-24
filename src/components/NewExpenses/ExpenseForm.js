@@ -5,6 +5,7 @@ const ExpenseForm = (props)=>{
     const [enteredtitle,setnewTitle] = useState('');
     const [enteredDate,setnewDate] = useState('');
     const [enteredamount,setnewAmount] = useState('');
+    const [enteredlocation,setnewLocation] = useState('');
     // const [userInput, setUserInput] = useState({
     //    enteredtitle : '',
     //    enteredDate : '',
@@ -42,31 +43,35 @@ const ExpenseForm = (props)=>{
         //     return {...prevState , enteredamount : event.target.value };
         //  });
     };
+    const locationchangeHandler = (event) =>{
+        setnewLocation(event.target.value);
+    }
     const submitHandler=(event)=>{
      event.preventDefault();
      const expenseData = {
         title : enteredtitle,
         amount : enteredamount,
-        date : new Date(enteredDate)
+        date : new Date(enteredDate),
+        location : enteredlocation
      };
-     console.log(expenseData);
      props.onSaveExpenseData(expenseData);
      setnewAmount('');
      setnewDate('');
      setnewTitle('');
+     setnewLocation('');
     };
 return <form onSubmit={submitHandler}>
   <div className="new-expense__controls">
     <div className="new-expense__control">
         <label>Title</label>
-        <input type='text'
+        <input type='text' required
          value={enteredtitle}
          onChange={titlechangeHandler}
          />
     </div>
     <div className="new-expense__control">
         <label>Amount</label>
-        <input type='number'
+        <input type='number' required
         value={enteredamount}
         onChange={amountchangeHandler} 
         min='0.01' 
@@ -76,7 +81,14 @@ return <form onSubmit={submitHandler}>
         <label>Date</label>
         <input type='date' 
         value={enteredDate}
-        onChange={datechangeHandler} min='2023-01-01' max='2027-12-31'/>
+        onChange={datechangeHandler} min='2021-01-01' max='2025-12-31'/>
+    </div>
+    <div className="new-expense__control">
+        <label>Location</label>
+        <input type='text' required
+         value={enteredlocation}
+         onChange={locationchangeHandler}
+         />
     </div>
   </div>
   <div className="new-expense__actions">

@@ -5,11 +5,11 @@ import ExpenseDetails from './ExpenseDetails';
 import Card from  '../UI/Card';
 
 function ExpenseItem(props) {
-  const [titles,setTitle] = useState(props.title);
-  const [amounts,setAmount] = useState(props.amount);
+  const [title,setTitle] = useState(props.title);
+  const [amount,setAmount] = useState(props.amount);
+  const[location,setLocation] = useState(props.location);
   const clickHandler = ()=>{
     setTitle('Updated!');
-    console.log(titles);
   };
   const deleteHandler=()=>{
     console.log('Expense Deleted!');
@@ -20,7 +20,7 @@ const expensechangeHandler=()=>{
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date}/>
-      <ExpenseDetails title={titles} amount={amounts} location={props.location}/>
+      <ExpenseDetails title={title} amount={amount} location={location} />
       <button onClick={expensechangeHandler}>Change Expense Cost</button>
       <button onClick={clickHandler}>Change Title</button>
       <button onClick={deleteHandler}>Delete Expense</button>
