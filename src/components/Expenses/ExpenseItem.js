@@ -22,9 +22,9 @@ const expensechangeHandler=()=>{
     <Card className="expense-item">
       <ExpenseDate date={props.date}/>
       <ExpenseDetails title={title} amount={amount} location={location} />
-      <button onClick={expensechangeHandler}>Change Expense Cost</button>
+      {/* <button onClick={expensechangeHandler}>Change Expense Cost</button>
       <button onClick={clickHandler}>Change Title</button>
-      <button onClick={deleteHandler}>Delete Expense</button>
+      <button onClick={deleteHandler}>Delete Expense</button> */}
     </Card>
     </li>
   );
